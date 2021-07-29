@@ -51,7 +51,7 @@ messageForm.addEventListener('submit', (e) => {
         let editMsg = prompt('Please enter edited Message');
         //console.log(editMsg);
         const span = editButton.parentElement.querySelector('span');
-        span.textContent = ` ${editMsg} `;
+        if (editMsg) span.textContent = ` ${editMsg} `;
     })
 
     newMessage.appendChild(editButton);
