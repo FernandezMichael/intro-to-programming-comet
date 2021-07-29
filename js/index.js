@@ -30,7 +30,7 @@ messageForm.addEventListener('submit', (e) => {
     const newMessage = document.createElement('li');
     newMessage.innerHTML = `<a href=\"mailto:${emailInput.value}\">${nameInput.value}</a>`+
         `<span> wrote: ${messageInput.value} </span>`;
-    console.log(newMessage.innerHTML);
+    //console.log(newMessage.innerHTML);
 
     const removeButton = document.createElement('button');
     removeButton.innerText = 'remove';
@@ -41,6 +41,20 @@ messageForm.addEventListener('submit', (e) => {
         // optional stretch goal 1
         if (!messageList.children.length) messageSection.style.display = 'none';
     })
+
+    // optional stretch goal 2
+    const editButton = document.createElement('button');
+    editButton.innerText = 'edit';
+    editButton.type = 'button';
+    editButton.addEventListener('click', (e) => {
+        const editParent = editButton.parentElement;
+        let editMsg = prompt('Please enter edited Message');
+        //console.log(editMsg);
+        const span = editButton.parentElement.querySelector('span');
+        span.textContent = ` ${editMsg} `;
+    })
+
+    newMessage.appendChild(editButton);
     newMessage.appendChild(removeButton);
     messageList.appendChild(newMessage);
     messageSection.style.display = 'block'; // optional stretch goal 1
