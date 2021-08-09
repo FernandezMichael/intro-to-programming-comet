@@ -2,7 +2,7 @@ let today = new Date();
 let thisYear = today.getFullYear();
 const footer = document.querySelector('footer');
 const copyright = document.createElement('p');
-copyright.innerHTML = "Michael Fernandez "+thisYear;
+copyright.innerHTML = `<div class=footer>&copy; Michael Fernandez ${thisYear}</div>`;
 footer.appendChild(copyright);
 let skills = ["JavaScript", "HTML", "Java", "C#", "C++", "SQL", "VBA"];
 const skillsSection = document.querySelector('#skills');
@@ -12,7 +12,7 @@ for (let i=0; i<skills.length; i++) {
     skill.innerText = skills[i];
     skillsList.appendChild(skill);
 }
-
+document.getElementById('messages').style.display = 'none';
 const messageForm = document.getElementById('leave_message');
 
 messageForm.addEventListener('submit', (e) => {
@@ -28,8 +28,8 @@ messageForm.addEventListener('submit', (e) => {
     const messageList = messageSection.querySelector('ul');
     
     const newMessage = document.createElement('li');
-    newMessage.innerHTML = `<a href=\"mailto:${emailInput.value}\">${nameInput.value}</a>`+
-        `<span> wrote: ${messageInput.value} </span>`;
+    newMessage.innerHTML = `<a class="message" href=\"mailto:${emailInput.value}\">${nameInput.value}</a>`+
+        `<span class="message"> wrote: ${messageInput.value} </span>`;
     //console.log(newMessage.innerHTML);
 
     const removeButton = document.createElement('button');
@@ -47,11 +47,9 @@ messageForm.addEventListener('submit', (e) => {
     editButton.innerText = 'edit';
     editButton.type = 'button';
     editButton.addEventListener('click', (e) => {
-        const editParent = editButton.parentElement;
         let editMsg = prompt('Please enter edited Message');
-        //console.log(editMsg);
         const span = editButton.parentElement.querySelector('span');
-        if (editMsg) span.textContent = ` ${editMsg} `;
+        if (editMsg) span.textContent = ` wrote: ${editMsg} `;
     })
 
     newMessage.appendChild(editButton);
