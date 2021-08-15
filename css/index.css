@@ -51,7 +51,8 @@ section {
     background-color: rgb(243, 205, 205);
 }
 
-ul.main-nav {list-style-type: none;}
+ul {list-style-type: none;}
+
 
 .main-nav li {
     display: block;
@@ -133,19 +134,24 @@ a.message { font-style: italic;}
 a.link, a:visited, a[href^="mailto:"], a[href^="mailto:"]::after {
     color: darkgreen
 }
+
 span.message {
     font-weight: 500;
     font-variant: small-caps;
 }
 
-div.footer {
-    text-align: center;
-    background-color: rgb(246, 203, 203);
-    border-style: groove;
-    border-radius: 5px;
-    padding: 25px;
-    margin: 500px, auto;
-    margin-top: 0;
+footer ul, footer section { display: flex;}
+
+footer section { 
+    width: 100%;
+    padding: 0;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.copyright, .fa, .fab {
+    margin: 0 10px 0 10px;
 }
 
 @media print {
@@ -164,7 +170,8 @@ div.footer {
 
 	#portfolio,
 	.main-nav,
-    .lm_form {
+    .lm_form,
+    #messages ul {
 		display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
