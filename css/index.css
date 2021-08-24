@@ -2,6 +2,10 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background-color: rgb(243, 205, 205);
     color: green;
@@ -10,7 +14,32 @@ body {
     font-size: 32px;
 }
 
-section#portfolio { text-align: center;}
+.fixed_header {
+    position: fixed;
+    width: 99%;
+    margin-top: -8px;
+    margin-bottom: 0;
+    margin-right: 10px;
+    padding-bottom: 0;
+    padding-bottom: 0;
+    z-index: 2;
+    
+}
+
+.space { padding-top: 100px;}
+
+.anchor {
+    display: block;
+    height: 150px;
+    margin-top: -150px;
+    visibility: hidden;
+}
+
+section#portfolio { 
+    text-align: center;
+    margin: auto;
+    margin-top: -10px;
+}
 
 section {
     border-style: groove;
@@ -19,6 +48,22 @@ section {
     margin: 10px, auto;
     margin-top: 10px;
     margin-bottom: 10px;
+    background-color: rgb(243, 205, 205);
+}
+
+ul {list-style-type: none;}
+
+
+.main-nav li {
+    display: block;
+    min-width: fit-content;
+    margin: 10px, auto;
+    margin-bottom: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    
 }
 
 h1 {
@@ -38,7 +83,7 @@ section#experience li, section#skills li {
     display: block;
     background-color: rgb(248, 222, 225);
     max-width: fit-content;
-    margin: 10px, auto;
+    margin: 5px;
     margin-bottom: 10px;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -47,6 +92,12 @@ section#experience li, section#skills li {
     border: 2px solid;
     border-radius: 5px;
     border-style: ridge;
+}
+
+.experience_flex, .skills_flex {
+    display: flex;
+    flex-wrap: wrap;
+    
 }
 
 label {
@@ -58,12 +109,13 @@ input, textarea {
     font-size: medium;
     padding: 15px, 15px;
     margin: 15px, auto;
+    margin-right: 25px;
     background-color: whitesmoke;
     color: darkolivegreen;
     border: 2px solid green;
     border-radius: 5px;
     border-style: groove;
-    width: 350px;
+    width: 400px;
 }
 
 
@@ -79,18 +131,27 @@ button {
 
 a.message { font-style: italic;}
 
+a.link, a:visited, a[href^="mailto:"], a[href^="mailto:"]::after {
+    color: darkgreen
+}
+
 span.message {
     font-weight: 500;
     font-variant: small-caps;
 }
 
-div.footer {
-    text-align: center;
-    background-color: rgb(246, 203, 203);
-    border-style: groove;
-    border-radius: 5px;
-    padding: 25px;
-    margin: 500px, auto;
+footer ul, footer section { display: flex;}
+
+footer section { 
+    width: 100%;
+    padding: 0;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.copyright, .fa, .fab {
+    margin: 0 10px 0 10px;
 }
 
 @media print {
@@ -105,4 +166,29 @@ div.footer {
     }
   }
 
+@media (min-width: 769px) {
+
+	#portfolio,
+	.main-nav,
+    .lm_form,
+    #messages ul {
+		display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    .lm_form {
+        justify-content: flex-start;
+    }
+
+}
+
+@media (max-width: 980px) {
+    .main-nav { display: none;}
+    #portfolio.h1 {
+        text-align: center; 
+        margin: auto;
+    }
+    .space {padding-top: 50px }
+}
 

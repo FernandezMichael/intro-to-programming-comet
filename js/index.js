@@ -1,9 +1,34 @@
 let today = new Date();
 let thisYear = today.getFullYear();
-const footer = document.querySelector('footer');
-const copyright = document.createElement('p');
-copyright.innerHTML = `<div class=footer>&copy; Michael Fernandez ${thisYear}</div>`;
-footer.appendChild(copyright);
+const footer = document.querySelector('footer');            // footer will have 'copyright_social' section
+const copyright_social = document.createElement("section"); // section will receive/parent copyright info and social media links
+footer.appendChild(copyright_social);
+
+// Copyright information
+const copyright = document.createElement('div');
+copyright.className = "copyright";
+copyright.innerHTML = `<strong>&copy; Michael Fernandez ${thisYear}</strong>`;
+copyright_social.appendChild(copyright);
+
+// Social Media links
+let social_link =["https://www.linkedin.com/", "https://github.com/FernandezMichael", 'https://slack.com/', 'https://twitter.com/', 'https://www.facebook.com/', 'https://www.tiktok.com/en/', 'https://www.instagram.com/?hl=en', 'https://www.youtube.com/', 'https://www.salesforce.com/','https://www.snapchat.com/', 'https://www.skype.com/en/'];
+let fa_class = ["fa fa-linkedin", "fab fa-github", "fa fa-slack", "fa fa-twitter", "fa fa-facebook", "fab fa-tiktok", "fa fa-instagram", "fa fa-youtube", "fab fa-salesforce", "fa fa-snapchat-ghost", "fa fa-skype", "fa fa-reddit", "fa fa-rss" ];
+const social_ul = document.createElement('ul');
+for (let i=0; i<fa_class.length; i++ ) {
+    let a = document.createElement('a');
+    a.href= social_link[i] ? social_link[i] : "#";
+    a.setAttribute("target", "_blank");
+    let fa_i = document.createElement('i');
+    fa_i.className = fa_class[i];
+    fa_i.setAttribute("aria-hidden", "true");
+    a.appendChild(fa_i);
+    let social_li = document.createElement('li');
+    social_li.appendChild(a);
+    social_ul.appendChild(social_li);
+}
+copyright_social.appendChild(social_ul);
+
+// Skills
 let skills = ["JavaScript", "HTML", "Java", "C#", "C++", "SQL", "VBA"];
 const skillsSection = document.querySelector('#skills');
 const skillsList = skillsSection.querySelector('ul');
@@ -12,6 +37,23 @@ for (let i=0; i<skills.length; i++) {
     skill.innerText = skills[i];
     skillsList.appendChild(skill);
 }
+
+// Projects
+let projects = ["Intro to Programming", "Animate! Pre-work"];
+let project_links = ["https://github.com/FernandezMichael/intro-to-programming-comet", "https://codesandbox.io/s/ctdpreworksandbox-forked-qj4ky?file=/sketch.js"];
+const projects_ul = document.createElement('ul');
+for (let i=0; i<projects.length; i++) {
+    let a = document.createElement('a');
+    a.href= project_links[i] ? project_links[i] : "#";
+    a.setAttribute("target", "_blank");
+    a.innerText = projects[i];
+    let proj_li = document.createElement('li');
+    proj_li.appendChild(a);
+    projects_ul.appendChild(proj_li);
+}
+document.getElementById("projects").appendChild(projects_ul);
+
+// Leave a Message section
 document.getElementById('messages').style.display = 'none';
 const messageForm = document.getElementById('leave_message');
 
@@ -30,8 +72,7 @@ messageForm.addEventListener('submit', (e) => {
     const newMessage = document.createElement('li');
     newMessage.innerHTML = `<a class="message" href=\"mailto:${emailInput.value}\">${nameInput.value}</a>`+
         `<span class="message"> wrote: ${messageInput.value} </span>`;
-    //console.log(newMessage.innerHTML);
-
+    
     const removeButton = document.createElement('button');
     removeButton.innerText = 'remove';
     removeButton.type = 'button';
@@ -60,6 +101,5 @@ messageForm.addEventListener('submit', (e) => {
     // reset
     nameInput.value='';
     emailInput.value='';
-    messageInput.value='';         
-    
+    messageInput.value='';
 })

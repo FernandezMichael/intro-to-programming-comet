@@ -2,60 +2,94 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Personal Portfolio</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
     <link rel="stylesheet" href="css/index.css">
   </head>
   <body>
-    <header>
-      <section id="portfolio"><h1>Michael Fernandez</h1></section>
+    <header >
+      <section id="portfolio" class="fixed_header">
+        <h1>Michael Fernandez</h1>
+        <ul class="main-nav">
+          <li><a href="#about_jump">About</a></li>
+          <li><a href="#experience_jump">Experience</a></li>
+          <li><a href="#skills_jump">Skills</a></li>
+          <li><a href="#connect_jump">Connect</a></li>
+          <li><a href="#projects_jump">Projects</a></li>
+          <li><a href="#lm_jump">Leave a Message</a></li>
+          <li><a href="#messages_jump">Messages</a></li>
+        </ul>
+    </section>
     </header>
     <main>
-      <section>
+      <section class="space"></section>   <!-- space for header & menu -->
+      <section id="about">
+        <div id="about_jump" class="anchor"></div>
         <h1>About</h1>
-        <p>1st Generation American Software Developer. Embarking on a journey to learn & master Web Programming too.</p>
+        <p>1st Generation American Software Developer. Embarking on a journey to also learn & master Web Programming.</p>
         <p> Pronouns: he/him</p>
       </section>
 
       <section id="experience">
+        <div id="experience_jump" class="anchor"></div>
         <h1>Experience</h2>
-        <ul>
+        <ul class="experience_flex">
           <li>C++ & Java Developer for FinTech at Credit Suisse (Tokyo)</li>
           <li>Financial SW Engineer at IBM Algorithmics (Tokyo)</li>
         </ul>
       </section>
 
       <section id="skills">
+        <div id="skills_jump" class="anchor"></div>
         <h2>Skills</h2>
-        <ul></ul>
+        <ul class="skills_flex"></ul>
       </section>
       
-      <section>
+      <section id="connect">
+        <div id="connect_jump" class="anchor"></div>
         <h1>Connect</h1>
         <ul>
           <li><a href="mailto:e.clean.code@gmail.com">Email</a></li>
           <li><a href="https://github.com/FernandezMichael">View my Github</a></li>
         </ul>
       </section>
+
+      <section id="projects">
+        <div id="projects_jump" class="anchor"></div>
+        <h2>Projects</h2>
+      </section>
     </main>
     <section>
+      <div id="lm_jump" class="anchor"></div>
       <h2>Leave a Message</h2>
       <form name='leave_message' id='leave_message'>
-        <label for="name">Name:</label><br>
-        <input type="text" name="name" id="name" required><br>
-        <label for="email">Email Address:</label><br>
-        <input type="email" name="email" id="email" required><br>
-        <label for="message">Message:</label><br>
-        <textarea name="message" id="message" required></textarea><br>
+        <div class="lm_form">
+          <div class="lm_name">
+            <label for="name">Name:</label><br>
+            <input type="text" name="name" id="name" required><br>
+          </div>
+          <div class="lm_email">
+            <label for="email">Email Address:</label><br>
+            <input type="email" name="email" id="email" required><br>
+          </div>
+          <div class="lm_message">
+            <label for="message">Message:</label><br>
+            <textarea name="message" id="message" required></textarea><br>
+          </div>
+        </div>
         <button type="submit">Submit</button>
       </form>
     </section>
     <section id="messages">
+      <div id="messages_jump" class="anchor"></div>
       <h2>Messages</h2>
       <ul></ul>
     </section>
+
+    <script src="https://kit.fontawesome.com/61fa47a02a.js" crossorigin="anonymous"></script>    
     <footer></footer>
+
     <script src="js/index.js"></script>
   </body>
 
