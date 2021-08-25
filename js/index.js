@@ -38,21 +38,6 @@ for (let i=0; i<skills.length; i++) {
     skillsList.appendChild(skill);
 }
 
-// Projects
-let projects = ["Intro to Programming", "Animate! Pre-work"];
-let project_links = ["https://github.com/FernandezMichael/intro-to-programming-comet", "https://codesandbox.io/s/ctdpreworksandbox-forked-qj4ky?file=/sketch.js"];
-const projects_ul = document.createElement('ul');
-for (let i=0; i<projects.length; i++) {
-    let a = document.createElement('a');
-    a.href= project_links[i] ? project_links[i] : "#";
-    a.setAttribute("target", "_blank");
-    a.innerText = projects[i];
-    let proj_li = document.createElement('li');
-    proj_li.appendChild(a);
-    projects_ul.appendChild(proj_li);
-}
-document.getElementById("projects").appendChild(projects_ul);
-
 // Leave a Message section
 document.getElementById('messages').style.display = 'none';
 const messageForm = document.getElementById('leave_message');
@@ -88,8 +73,8 @@ messageForm.addEventListener('submit', (e) => {
     editButton.innerText = 'edit';
     editButton.type = 'button';
     editButton.addEventListener('click', (e) => {
-        let editMsg = prompt('Please enter edited Message');
         const span = editButton.parentElement.querySelector('span');
+        let editMsg = prompt('Please enter edited Message', span.textContent.slice(8));
         if (editMsg) span.textContent = ` wrote: ${editMsg} `;
     })
 
@@ -103,3 +88,26 @@ messageForm.addEventListener('submit', (e) => {
     emailInput.value='';
     messageInput.value='';
 })
+
+// Projects
+var githubRequest = new XMLHttpRequest();
+githubRequest.open("GET", "https://api.github.com/users/FernandezMichael/repos");
+githubRequest.send();
+githubRequest.onreadystatechange = function() {
+    if (githubRequest.readyState === 4) {
+        repositories = JSON.parse(githubRequest.responseText);
+        const projectSection = document.getElementById('projects');
+        const projectList = projectSection.querySelector('ul');
+        for (let i=0; i < repositories.length; i++) {
+            let project = document.createElement('li');
+            let repositoryName = repositories[i]['name'];
+            if (repositoryName.startsWith('intro-to-programming')) {    // CTD projects only
+                let anchor = document.createElement('a');               // Optional at Lesson 6.1
+                anchor.innerText = repositoryName;
+                anchor.href = repositories[i]['html_url'];
+                project.appendChild(anchor);
+                projectList.appendChild(project);            
+            }
+        }
+    }
+}
