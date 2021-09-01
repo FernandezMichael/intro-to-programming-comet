@@ -89,25 +89,30 @@ messageForm.addEventListener('submit', (e) => {
     messageInput.value='';
 })
 
-// Projects
-var githubRequest = new XMLHttpRequest();
-githubRequest.open("GET", "https://api.github.com/users/FernandezMichael/repos");
-githubRequest.send();
-githubRequest.onreadystatechange = function() {
-    if (githubRequest.readyState === 4) {
-        repositories = JSON.parse(githubRequest.responseText);
-        const projectSection = document.getElementById('projects');
-        const projectList = projectSection.querySelector('ul');
-        for (let i=0; i < repositories.length; i++) {
-            let project = document.createElement('li');
-            let repositoryName = repositories[i]['name'];
-            if (repositoryName.startsWith('intro-to-programming')) {    // CTD projects only
-                let anchor = document.createElement('a');               // Optional at Lesson 6.1
-                anchor.innerText = repositoryName;
-                anchor.href = repositories[i]['html_url'];
-                project.appendChild(anchor);
-                projectList.appendChild(project);            
-            }
+// Projects (Refactored code)
+
+fetch("https://api.github.com/users/FernandezMichael/repos")
+  .then(statusCheck)
+  .then(response => response.json())
+  .then(repositories => manipulateRepos(repositories))
+  .catch(error => console.log('Looks like there was a problem!', error));   // Optional at Lesson 6.2
+
+function manipulateRepos(repositories) {
+    const projectSection = document.getElementById('projects');
+    const projectList = projectSection.querySelector('ul');
+    for (let i=0; i < repositories.length; i++) {
+        let project = document.createElement('li');
+        let repositoryName = repositories[i]['name'];
+        if (repositoryName.startsWith('intro-to-programming')) {    // CTD projects only
+            let anchor = document.createElement('a');               // Optional at Lesson 6.1
+            anchor.innerText = repositoryName;
+            anchor.href = repositories[i]['html_url'];
+            project.appendChild(anchor);
+            projectList.appendChild(project);            
         }
     }
 }
+
+function statusCheck(response) {    // stack trace error helper function
+    return response.ok ? Promise.resolve(response) : Promise.reject(new Error(response.statusText));
+  }
