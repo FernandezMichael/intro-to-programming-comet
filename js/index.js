@@ -94,7 +94,7 @@ messageForm.addEventListener('submit', (e) => {
 fetch("https://api.github.com/users/FernandezMichael/repos")
   .then(statusCheck)
   .then(response => response.json())
-  .then(repositories => manipulateRepos(repositories))
+  .then(manipulateRepos)  // .then(repositories => manipulateRepos(repositories))
   .catch(error => console.log('Looks like there was a problem!', error));   // Optional at Lesson 6.2
 
 function manipulateRepos(repositories) {
