@@ -116,3 +116,11 @@ function manipulateRepos(repositories) {
 function statusCheck(response) {    // stack trace error helper function
     return response.ok ? Promise.resolve(response) : Promise.reject(new Error(response.statusText));
   }
+
+  // mobile menu toggle
+  const burger = document.getElementById('hamburger');
+  const navUL  = document.getElementById('nav-ul');
+  burger.addEventListener('click', ()=> {
+        navUL.classList.toggle('show');
+        burger.classList.toggle('show');
+    });

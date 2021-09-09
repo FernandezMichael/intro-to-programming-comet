@@ -8,9 +8,12 @@
     <link rel="stylesheet" href="css/index.css">
   </head>
   <body>
+
+    <script src="https://kit.fontawesome.com/61fa47a02a.js" crossorigin="anonymous"></script>    
+    
     <header >
       <section id="portfolio" class="fixed_header">
-        <h1>Michael Fernandez</h1>
+        <span id="name"><h1>Michael Fernandez</h1></span>
         <ul class="main-nav">
           <li><a href="#about_jump">About</a></li>
           <li><a href="#experience_jump">Experience</a></li>
@@ -20,7 +23,21 @@
           <li><a href="#lm_jump">Leave a Message</a></li>
           <li><a href="#messages_jump">Messages</a></li>
         </ul>
-    </section>
+      </section>
+      <div id="mobile-nav">
+        <nav>
+          <button class="hamburger" id="hamburger"><i class="fas fa-bars"></i></button>
+          <ul class="nav-ul" id="nav-ul">
+            <li><a href="#about_jump">About</a></li>
+            <li><a href="#experience_jump">Experience</a></li>
+            <li><a href="#skills_jump">Skills</a></li>
+            <li><a href="#projects_jump">Projects</a></li>
+            <li><a href="#connect_jump">Connect</a></li>
+            <li><a href="#lm_jump">Leave a Message</a></li>
+            <li><a href="#messages_jump">Messages</a></li>
+          </ul>
+        </nav>
+      </div>
     </header>
     <main>
       <section class="space"></section>   <!-- space for header & menu -->
@@ -89,7 +106,6 @@
       <ul></ul>
     </section>
 
-    <script src="https://kit.fontawesome.com/61fa47a02a.js" crossorigin="anonymous"></script>    
     <footer></footer>
 
     <script src="js/index.js"></script>

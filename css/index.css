@@ -29,7 +29,7 @@ body {
     text-align: left;
     margin: auto;
     margin-top: -10px;
-    height: 157px;    
+    height: 160px;    
 }
 
 .space { padding-top: 117px;}
@@ -53,8 +53,10 @@ section {
 
 ul {list-style-type: none;}
 
+a { text-decoration: none;}
 
-.main-nav li {
+
+.main-nav li, .nav-ul li {
     display: block;
     min-width: fit-content;
     margin: 10px, auto;
@@ -63,10 +65,13 @@ ul {list-style-type: none;}
     padding-bottom: 10px;
     padding-left: 10px;
     padding-right: 10px;
-    
 }
 
 #portfolio.h1 { text-align: left;}
+
+.main-nav li:hover {
+    font-size: 125%;
+}
 
 h1 {
     line-height: 50%;
@@ -159,6 +164,40 @@ footer section {
     margin: 0 10px 0 10px;
 }
 
+button#hamburger {
+    background-color: transparent;
+    color: green;
+    border: groove;
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    right: 30px;
+    top: 45px;
+    padding: 0;
+    z-index: 10;
+}
+
+#nav-ul {
+    position: fixed;
+    right: 30px;
+    top: 75px;
+    padding-left: 0;
+    padding-bottom: 0;
+    font-size: 75%;
+    font-weight: bolder;
+    text-align: end;
+    border-width: auto;
+    box-shadow: 3px 3px 3px rgb(90, 89, 89);
+    background-color: rgb(243, 205, 205);
+    display: none;
+    width: 175px;
+    text-decoration: none;
+}
+
+.nav-ul li:hover {
+    background-color:rgb(243, 205, 205);
+}
+
 @media print {
     section {
       min-height: auto;
@@ -180,15 +219,53 @@ footer section {
         flex-wrap: wrap;
     }
 
-    .lm_form {
-        justify-content: flex-start;
-    }
-
 }
 
+@media  (max-width: 920px) {
+    .lm_form {
+        justify-content: center;
+    }
+}
+
+
 @media  (max-width: 1070px) {
+    #porfolio.fixed_header {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+    }
+    #portfolio span { 
+        width: 400px;
+        margin-right: 0; 
+        width: 25%;
+    }
+    #hamburger { 
+        margin-left: auto;
+        margin-right: 0;
+        width: 35%;
+        position:fixed;
+    }
+
+    #nav-ul.show { 
+        position: fixed;
+        right: 30px;
+        top: 150px;
+        font-size: 75%;
+        font-weight: bolder;
+        text-align: end;
+        border-width: auto;
+        box-shadow: 5px 5px 5px rgb(100, 98, 98);
+        background-color: rgb(243, 197, 197);
+        display: flex;
+        flex-direction: column; 
+    }
+
+    button#hamburger.show {
+        background-color: rgb(243, 197, 197);
+    }
+    
     ul.main-nav { display: none; }
-    #portfolio h1 { text-align: center; }
+    
 }
 @media (min-width: 1071px) {
 
@@ -197,7 +274,8 @@ footer section {
     .lm_form,
     #messages ul {
 		display: flex;
-        justify-content: space-between;
+        justify-content:space-between;
         flex-wrap: wrap;
     }
+    #hamburger, #nav-ul { display: none;}
 }
