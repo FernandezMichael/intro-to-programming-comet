@@ -198,6 +198,11 @@ button#hamburger {
     background-color:rgb(243, 205, 205);
 }
 
+#about_panel {
+    display: flex;
+    align-items: stretch;
+}
+
 @media print {
     section {
       min-height: auto;
