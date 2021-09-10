@@ -203,6 +203,18 @@ button#hamburger {
     align-items: stretch;
 }
 
+#about_1, #about_2 {
+    margin: 15px;
+}
+
+#photo_2 {
+    border-radius: 5px;
+    border: groove
+}
+
+
+/* MEDIA QUERIES */
+
 @media print {
     section {
       min-height: auto;
