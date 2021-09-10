@@ -205,11 +205,15 @@ button#hamburger {
 
 #about_1, #about_2 {
     margin: 15px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #photo_2 {
     border-radius: 5px;
-    border: groove
+    border: groove;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 
