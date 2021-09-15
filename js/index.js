@@ -94,7 +94,7 @@ messageForm.addEventListener('submit', (e) => {
 fetch("https://api.github.com/users/FernandezMichael/repos")
   .then(statusCheck)
   .then(response => response.json())
-  .then(repositories => manipulateRepos(repositories))
+  .then(manipulateRepos)  // .then(repositories => manipulateRepos(repositories))
   .catch(error => console.log('Looks like there was a problem!', error));   // Optional at Lesson 6.2
 
 function manipulateRepos(repositories) {
@@ -116,3 +116,11 @@ function manipulateRepos(repositories) {
 function statusCheck(response) {    // stack trace error helper function
     return response.ok ? Promise.resolve(response) : Promise.reject(new Error(response.statusText));
   }
+
+  // mobile menu toggle
+  const burger = document.getElementById('hamburger');
+  const navUL  = document.getElementById('nav-ul');
+  burger.addEventListener('click', ()=> {
+        navUL.classList.toggle('show');
+        burger.classList.toggle('show');
+    });
